@@ -23,6 +23,11 @@ RUN wget $SBT_URL/$SBT_VERSION/$SBT_TGZ && \
 	mv sbt $SCALA_HOME/sbt && \
 	$SCALA_HOME/sbt/bin/sbt
 
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
+	apt-get install -y nodejs && \
+	apt-get install -y build-essential && \
+	npm install source-map-support
+
 ENV PATH $PATH:$SCALA_HOME/bin:$SCALA_HOME/sbt/bin
 
 WORKDIR /home
